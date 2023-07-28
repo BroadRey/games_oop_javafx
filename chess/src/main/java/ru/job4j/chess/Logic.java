@@ -22,8 +22,10 @@ public final class Logic {
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
         for (Figure figure : figures) {
-            if (Arrays.asList(steps).contains(figure.position())) {
-                throw new OccupiedCellException();
+            for (Cell cell : steps) {
+                if (cell.equals(figure.position())) {
+                    throw new OccupiedCellException("The chess field is occupied");
+                }
             }
         }
 
